@@ -1,1387 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل إعادة ضبط الدوبامين</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-red: #FF2E63;
-            --secondary-cyan: #08D9D6;
-            --dark-navy: #252A34;
-            --light-gray: #EAEAEA;
-        }
-        
-        body {
-            font-family: 'Tajawal', Arial, sans-serif;
-            background: white;
-            color: var(--dark-navy);
-            line-height: 1.8;
-            direction: rtl;
-        }
-        
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
-            margin: 0 auto 5mm;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            page-break-after: always;
-            position: relative;
-        }
-        
-        @media print {
-            .page {
-                margin: 0;
-                box-shadow: none;
-                page-break-after: always;
-            }
-            .no-print {
-                display: none;
-            }
-        }
-        
-        /* Cover Page */
-        .cover {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark-navy) 0%, #1a1d26 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cover::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-            opacity: 0.1;
-        }
-        
-        .cover::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--secondary-cyan);
-            border-radius: 50%;
-            bottom: -150px;
-            left: -150px;
-            opacity: 0.1;
-        }
-        
-        .cover-content {
-            z-index: 1;
-        }
-        
-        .emoji-large {
-            font-size: 80px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 5px 15px rgba(255,46,99,0.3));
-        }
-        
-        .main-title {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--primary-red);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            font-size: 28px;
-            font-weight: 500;
-            color: var(--secondary-cyan);
-            margin-bottom: 40px;
-        }
-        
-        .cover-description {
-            font-size: 18px;
-            max-width: 600px;
-            line-height: 2;
-            opacity: 0.9;
-        }
-        
-        /* Chapter Styles */
-        .chapter-header {
-            background: linear-gradient(135deg, var(--primary-red), #ff4775);
-            color: white;
-            padding: 30px;
-            margin: -20mm -20mm 30px -20mm;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .chapter-header::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: var(--secondary-cyan);
-            border-radius: 50%;
-            top: -100px;
-            left: -100px;
-            opacity: 0.2;
-        }
-        
-        .chapter-number {
-            font-size: 72px;
-            font-weight: 900;
-            opacity: 0.3;
-            position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .chapter-title {
-            font-size: 32px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-red);
-            margin: 30px 0 15px;
-            padding-right: 15px;
-            border-right: 5px solid var(--secondary-cyan);
-        }
-        
-        .content-text {
-            font-size: 16px;
-            line-height: 2;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .highlight-box {
-            background: var(--light-gray);
-            border-right: 4px solid var(--primary-red);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        
-        .callout {
-            background: linear-gradient(135deg, rgba(8,217,214,0.1), rgba(8,217,214,0.05));
-            border: 2px solid var(--secondary-cyan);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-        
-        .bullet-point {
-            margin-right: 25px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .bullet-point::before {
-            content: '●';
-            color: var(--primary-red);
-            font-size: 20px;
-            position: absolute;
-            right: -25px;
-        }
-        
-        .page-number {
-            position: absolute;
-            bottom: 15mm;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: #999;
-        }
-        
-        .emoji-icon {
-            font-size: 24px;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: white;
-            border-right: 5px solid var(--secondary-cyan);
-            padding: 20px;
-            margin: 25px 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            font-size: 18px;
-            font-weight: 500;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Cover Page -->
-    <div class="page cover">
-        <div class="cover-content">
-            <div class="emoji-large">✨</div>
-            
-            <h1 class="main-title">دليل إعادة ضبط الدوبامين</h1>
-            <p class="subtitle">كيف تسترجع السيطرة على حياتك وتنجز الي قلت انك راح تنجزه</p>
-            <p class="cover-description">
-                رحلة تحويلية من التسويف إلى الإنتاجية<br>
-                من الإدمان الرقمي إلى التركيز العميق<br>
-                من الأحلام إلى الإنجاز الفعلي
-            </p>
-        </div>
-    </div>
-
-    <!-- Copyright Page -->
-    <div class="page" style="display: flex; flex-direction: column; justify-content: center; padding: 40mm 20mm;">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <div style="font-size: 48px; margin-bottom: 20px;">©</div>
-            <h2 style="font-size: 32px; font-weight: 700; color: var(--primary-red); margin-bottom: 20px;">
-                حقوق النشر والملكية الفكرية
-            </h2>
-        </div>
-        
-        <div style="background: var(--light-gray); padding: 30px; border-radius: 15px; border-right: 5px solid var(--primary-red); margin-bottom: 30px;">
-            <p style="font-size: 18px; line-height: 2; margin-bottom: 20px;">
-                جميع الحقوق محفوظة © 2025
-            </p>
-            <p style="font-size: 16px; line-height: 2;">
-                هذا الكتاب محمي بموجب قوانين حقوق النشر والملكية الفكرية. لا يجوز نسخ أو إعادة إنتاج أو توزيع أو نشر أي جزء من هذا العمل بأي شكل من الأشكال (إلكتروني أو ورقي) دون الحصول على إذن كتابي مسبق من صاحب الحقوق.
-            </p>
-        </div>
-        
-        <div style="background: rgba(255,46,99,0.1); padding: 25px; border-radius: 10px; border: 2px solid var(--primary-red); margin-bottom: 25px;">
-            <h3 style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-bottom: 15px;">
-                ⚠️ تنبيه مهم
-            </h3>
-            <p style="font-size: 16px; line-height: 2;">
-                مشاركة هذا الكتاب أو نشره على الإنترنت أو وسائل التواصل الاجتماعي أو أي منصة أخرى دون موافقة كتابية صريحة من المؤلف يُعد انتهاكًا صريحًا لحقوق النشر ويعرض المخالف للمساءلة القانونية.
-            </p>
-        </div>
-        
-        <div style="background: rgba(8,217,214,0.1); padding: 25px; border-radius: 10px; border-right: 5px solid var(--secondary-cyan);">
-            <h3 style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-bottom: 15px;">
-                ✔️ الاستخدام المسموح
-            </h3>
-            <p style="font-size: 16px; line-height: 2; margin-bottom: 15px;">
-                هذا الكتاب مخصص للاستخدام الشخصي فقط:
-            </p>
-            <ul style="margin-right: 25px; font-size: 16px; line-height: 2;">
-                <li style="margin-bottom: 10px;">يمكنك قراءته وتطبيق محتواه لتطوير نفسك</li>
-                <li style="margin-bottom: 10px;">يمكنك طباعة نسخة واحدة للاستخدام الشخصي</li>
-                <li style="margin-bottom: 10px;">يمكنك الاقتباس من محتواه مع ذكر المصدر</li>
-            </ul>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--light-gray);">
-            <p style="font-size: 14px; color: #666; line-height: 2;">
-                نقدر احترامك لحقوق الملكية الفكرية<br>
-                شكرًا لك على دعم المحتوى العربي الأصيل
-            </p>
-        </div>
-    </div>
-
-    <!-- Table of Contents -->
-    <div class="page">
-        <div style="text-align: center; margin-bottom: 50px; padding-top: 20px;">
-            <div style="font-size: 48px; margin-bottom: 15px;">📑</div>
-            <h2 style="font-size: 36px; font-weight: 900; color: var(--primary-red); margin-bottom: 10px;">
-                فهرس المحتويات
-            </h2>
-            <div style="width: 100px; height: 4px; background: var(--secondary-cyan); margin: 0 auto;"></div>
-        </div>
-        
-        <div style="max-width: 600px; margin: 0 auto;">
-            <!-- Chapter entries -->
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">01</span>
-                    <span style="font-size: 18px; font-weight: 600;">القسم الأول: فهم المشكلة</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 1</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">02</span>
-                    <span style="font-size: 18px; font-weight: 600;">الدوبامين — المفتاح اللي يحدد إذا بتنجز</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 3</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">03</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف يبدأ الإدمان؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 5</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">04</span>
-                    <span style="font-size: 18px; font-weight: 600;">ليه مستحيل تقلع من الإدمان بالقوة؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 6</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">05</span>
-                    <span style="font-size: 18px; font-weight: 600;">وش معنى "إعادة ضبط الدوبامين"؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 7</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">06</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف ترجع تتحكم بحياتك؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 8</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">07</span>
-                    <span style="font-size: 18px; font-weight: 600;">وش الشي اللي تهرب منه؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 9</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">08</span>
-                    <span style="font-size: 18px; font-weight: 600;">وش أسوي إذا المهمة ثقيلة؟</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 10</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">09</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف ترجع لمسار حياتك</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 11</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">10</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف تنجح في حياتك</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 12</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">11</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف ترجع الالتزام لحياتك</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 13</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">12</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف تبني حياة تمشي على "الأوتوماتيك"</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 14</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--primary-red); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-left: 15px;">13</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف تبني نظامك الشخصي — خطوة بخطوة</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 15</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; margin-bottom: 12px; background: var(--light-gray); border-radius: 10px; border-right: 4px solid var(--secondary-cyan); cursor: pointer; transition: all 0.3s;">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-left: 15px;">14</span>
-                    <span style="font-size: 18px; font-weight: 600;">كيف تثبّت هويتك الجديدة</span>
-                </div>
-                <span style="color: #999; font-size: 16px;">صفحة 16</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; background: linear-gradient(135deg, var(--primary-red), #ff4775); border-radius: 10px; color: white; box-shadow: 0 5px 15px rgba(255,46,99,0.3);">
-                <div>
-                    <span style="font-size: 20px; font-weight: 700; margin-left: 15px;">15</span>
-                    <span style="font-size: 18px; font-weight: 600;">الخلاصة — الفصل الأخير</span>
-                </div>
-                <span style="font-size: 16px;">صفحة 17</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chapter 1 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">01</div>
-            <h2 class="chapter-title">ليه مع إنك تعرف وش لازم تسوي… ما تسويه؟</h2>
-        </div>
-        
-        <div class="content-text">
-            إنت تعرف وش المفروض تسويه. تعرف إن عندك مهام، أهداف، شغل متأخر… وتعرف إن إنجازها بيفرق معك كثير.
-        </div>
-        
-        <div class="content-text">
-            بس إذا جاء وقت الجد؟ تلقى نفسك ماسك الجوال… فاتح سناب، تيك توك، تويتر… وتضيع بالساعات.
-        </div>
-        
-        <div class="callout">
-            <strong style="color: var(--primary-red);">السبب الحقيقي:</strong> دماغك تعوّد على المتعة السريعة… مو الشغل الحقيقي.
-        </div>
-        
-        <h3 class="section-title">🔥 ليه نأجل الأشياء؟</h3>
-        
-        <div class="content-text">
-            <strong>1. لأن الدماغ يحب الطريق الأسهل</strong>
-        </div>
-        
-        <div class="content-text">
-            قبل أي خطوة، دماغك يسأل: "هل الشي هذا بيعطيني مكافأة بسرعة؟"
-        </div>
-        
-        <div class="highlight-box">
-            <div class="bullet-point">إذا الجواب نعم → يسويه فورًا</div>
-            <div class="bullet-point">إذا الجواب لا → يبدأ يكسل ويتهرّب</div>
-        </div>
-        
-        <div class="content-text">
-            الدراسة؟ تبيلها وقت. الشغل؟ يبيله تركيز. الرياضة؟ مجهود.
-        </div>
-        
-        <div class="content-text">
-            بينما: فتح تيك توك ثانية واحدة… فيديو وراء فيديو… سنابات كثيرة… إشعار واحد يرفع المزاج…
-        </div>
-        
-        <div class="quote-box">
-            طبيعي دماغك يختار الأسهل… حتى لو كان يدمّر يومك.
-        </div>
-        
-        <div class="page-number">1</div>
-    </div>
-
-    <!-- Chapter 1 Continued -->
-    <div class="page">
-        <div class="content-text">
-            <strong style="font-size: 18px; color: var(--primary-red);">2. لأن البيئة حولك مصممة تخليك تشتت</strong>
-        </div>
-        
-        <div class="content-text">
-            الجوال أقوى من إرادة أي شخص. الشركات تعرف نفسية المستخدم… وتدرس سلوكه… وتضبط كل شي علشان تجذب تركيزك… وتخليك ترجع للتطبيق غصب.
-        </div>
-        
-        <div class="callout">
-            <span class="emoji-icon">⚠️</span>
-            إنت قاعد تواجه معركة يومية ضد التطبيقات… مو ضد نفسك.
-        </div>
-        
-        <div class="content-text">
-            <strong style="font-size: 18px; color: var(--primary-red);">3. لأننا نخلط بين "النية" و"الفعل"</strong>
-        </div>
-        
-        <div class="content-text">
-            لما تقول: "ببدأ بكرة"… "بعد شوي"… "قبل ما أنام بخلصها"… يعطيك دماغك إحساس إنك سويت شيء… مع إنك ما سويت شي.
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong>الدائرة السلبية:</strong></p>
-            <div class="bullet-point">تتحمس للفكرة</div>
-            <div class="bullet-point">تخطط</div>
-            <div class="bullet-point">تتخيل الإنجاز</div>
-            <div class="bullet-point">وبالنهاية… ما تبدأ</div>
-        </div>
-        
-        <div class="content-text">
-            <strong style="font-size: 18px; color: var(--primary-red);">4. لأن التسويف يصنع دائرة سلبية</strong>
-        </div>
-        
-        <div class="content-text">
-            التسويف مو مجرد تأجيل… هو حلقة كاملة: تأجيل ← إحساس بالذنب ← جلد ذات ← فقدان ثقة بالنفس ← تسويف أكثر…
-        </div>
-        
-        <div class="quote-box">
-            وتلقى الأسبوع خلص… ثم الشهر… وتبدأ تحس إن "هذه شخصيتك". مع إنها فقط عادة دماغية تتكرر… لا أكثر.
-        </div>
-        
-        <div class="page-number">2</div>
-    </div>
-
-    <!-- Chapter 2 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">02</div>
-            <h2 class="chapter-title">⚡️ الدوبامين — المفتاح اللي يحدد إذا بتنجز أو بتسوّف</h2>
-        </div>
-        
-        <h3 class="section-title">وش هو الدوبامين؟</h3>
-        
-        <div class="content-text">
-            الدوبامين مو "هرمون سعادة" زي ما الناس تقول. ولا هو شيء غريب أو علمي صعب.
-        </div>
-        
-        <div class="callout">
-            <strong style="color: var(--primary-red);">الدوبامين ببساطة هو:</strong> المادة اللي تقول لدماغك: "سَوّ هالشي… هالشي يستاهل."
-        </div>
-        
-        <div class="content-text">
-            هو اللي يعطيك الدافع، الحماس، الرغبة، الحركَة، الإصرار، وحتى الإدمان.
-        </div>
-        
-        <h3 class="section-title">ليش لازم تهتم بدوبامينك؟</h3>
-        
-        <div class="highlight-box">
-            <p><strong>✔️ إذا كان مضبوط:</strong></p>
-            <div class="bullet-point">تقوم من السرير بسهولة</div>
-            <div class="bullet-point">تبدأ شغلك</div>
-            <div class="bullet-point">تكمّل</div>
-            <div class="bullet-point">وتنجز اللي قلت بتنجزه</div>
-        </div>
-        
-        <div class="highlight-box" style="border-right-color: var(--dark-navy);">
-            <p><strong>✔️ وإذا كان ملخبط:</strong></p>
-            <div class="bullet-point">تتشتت بسرعة</div>
-            <div class="bullet-point">تسوّف</div>
-            <div class="bullet-point">تحس بثقل</div>
-            <div class="bullet-point">ومهما حاولت… ما تبدأ</div>
-        </div>
-        
-        <div class="quote-box">
-            الفرق بين الشخص المنجز والشخص اللي يومه يضيع؟ مو الذكاء… ولا القوة… ولا التحفيز. هو طريقة إدارة الدوبامين.
-        </div>
-        
-        <div class="page-number">3</div>
-    </div>
-
-    <!-- Chapter 2 Continued -->
-    <div class="page">
-        <h3 class="section-title">وش اللي يخرب الدوبامين؟</h3>
-        
-        <div class="content-text">
-            <strong style="font-size: 18px; color: var(--primary-red);">1. المتعة السريعة (Fast Dopamine)</strong>
-        </div>
-        
-        <div class="content-text">
-            تيك توك، سناب، ريلز، تنبيهات، ألعاب، مقاطع قصيرة، سواليف فاضية… كلها تعطي دفعة قوية وسريعة للدوبامين… بدون أي مجهود.
-        </div>
-        
-        <div class="callout">
-            <p><strong>وش يصير؟</strong></p>
-            <p>دماغك يتعوّد إن المكافأة تجيه بسهولة، وبالتالي:</p>
-            <div class="bullet-point">الدراسة تصير "ثقيلة"</div>
-            <div class="bullet-point">الشغل يصير "ممل"</div>
-            <div class="bullet-point">التمرين يصير "معاناة"</div>
-            <div class="bullet-point">الأهداف تصير "مستحيلة"</div>
-        </div>
-        
-        <div class="content-text">
-            <strong style="font-size: 18px; color: var(--primary-red);">2. كثرة التبديل بين التطبيقات</strong>
-        </div>
-        
-        <div class="content-text">
-            تفتح تويتر → تقفل → تيك توك → سناب → واتساب… هذا اسمه Dopamine Switching. يعني: دماغك يقفز من مكافأة لمكافأة لمكافأة.
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong>النتيجة:</strong></p>
-            <p>العاب حقيقية زي: كتاب، مهمة، دراسة، كتابة، عمل… ما تعطي نفس المتعة. فدماغك يرفضها تلقائي.</p>
-        </div>
-        
-        <h3 class="section-title">الدوبامين الحقيقي vs الدوبامين السريع</h3>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-            <div class="highlight-box" style="background: rgba(255,46,99,0.1); border-right-color: var(--primary-red);">
-                <p><strong>❌ الدوبامين السريع:</strong></p>
-                <div class="bullet-point">فيديوهات</div>
-                <div class="bullet-point">سنابات</div>
-                <div class="bullet-point">إشعارات</div>
-                <div class="bullet-point">محتوى بسيط</div>
-                <p style="margin-top: 15px; color: var(--primary-red);"><strong>يدمّر تركيزك على المدى الطويل</strong></p>
-            </div>
-            
-            <div class="highlight-box" style="background: rgba(8,217,214,0.1); border-right-color: var(--secondary-cyan);">
-                <p><strong>✔️ الدوبامين الحقيقي:</strong></p>
-                <div class="bullet-point">إنجاز صغير</div>
-                <div class="bullet-point">دراسة 15 دقيقة</div>
-                <div class="bullet-point">مشي</div>
-                <div class="bullet-point">تمارين خفيفة</div>
-                <p style="margin-top: 15px; color: var(--secondary-cyan);"><strong>يبني ثقة بنفسك ويرفع إنتاجيتك</strong></p>
-            </div>
-        </div>
-        
-        <div class="page-number">4</div>
-    </div>
-
-    <!-- Chapter 3 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">03</div>
-            <h2 class="chapter-title">كيف يبدأ الإدمان؟ (بدون ما تحس)</h2>
-        </div>
-        
-        <div class="quote-box">
-            الإدمان يبدأ دايمًا بالهروب. الهروب من الملل، الضغط، المسؤوليات، الشعور إنك "مو بكامل طاقتك"
-        </div>
-        
-        <h3 class="section-title">١- دائرة الإدمان تبدأ من لحظة بسيطة</h3>
-        
-        <div class="content-text">
-            زي: فتحت سناب تقول "دقيقة بس"… شغلت لعبة تقول "جيم واحد"… دخلت يوتيوب تشوف "مقطع واحد بس"…
-        </div>
-        
-        <div class="callout">
-            والدماغ؟ يعرف إنك تبي تهرب من الشعور اللي تحس فيه… فيكافئك بدوبامين عشان يعزز الهروب.
-        </div>
-        
-        <h3 class="section-title">٢- الإدمان مو عن المتعة… عن الهروب</h3>
-        
-        <div class="highlight-box">
-            <p style="font-size: 18px; font-weight: 700; color: var(--primary-red); margin-bottom: 15px;">
-                الإدمان مو لأن الشيء ممتع… لكن لأنه يمنعك من الشعور بشيء ثاني.
-            </p>
-            <div class="bullet-point">الطفش؟ يختفي</div>
-            <div class="bullet-point">القلق؟ يخف</div>
-            <div class="bullet-point">الضغط؟ يتجمّد</div>
-            <div class="bullet-point">المهام؟ تتأجل</div>
-        </div>
-        
-        <h3 class="section-title">٣- تبدأ تشوف الحياة من عدسة "الهروب"</h3>
-        
-        <div class="content-text">
-            بدون ما تنتبه، يتحوّل دماغك لوضعية: كل شي صعب → تهرب… كل شي مسؤول → تهرب… كل شي جديد → تهرب…
-        </div>
-        
-        <div class="quote-box">
-            وتوصل لمرحلة تقول: "ما عاد عندي طاقة". لكن الحقيقة؟ طاقتك موجودة… بس كلها محجوزة للهروب.
-        </div>
-        
-        <div class="page-number">5</div>
-    </div>
-
-    <!-- Chapter 4 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">04</div>
-            <h2 class="chapter-title">ليه مستحيل تقلع من الإدمان بالقوة؟</h2>
-        </div>
-        
-        <div class="content-text">
-            أغلب الناس يسوون نفس الغلطة: يحاول يقلع من عادته بالقوة، بالعناد، وبالحماس اللحظي.
-        </div>
-        
-        <div class="callout">
-            <span class="emoji-icon">⚠️</span>
-            <strong>لكن الحقيقة اللي ما أحد يقولها…</strong> القوة ما تنفع ضد الإدمان.
-        </div>
-        
-        <h3 class="section-title">١- لأن الإدمان أقوى منك من ناحية بيولوجية</h3>
-        
-        <div class="content-text">
-            الموضوع مو عزيمة… الموضوع دماغ. دماغك متعوّد: وقت الفراغ → عادة… وقت الملل → هروب… وقت الضغط → هروب أكبر.
-        </div>
-        
-        <div class="highlight-box">
-            <p>فإنت لما تقول "بوقف"، إنت قاعد تتحدى نظام عصبي كامل متبرمج من شهور وسنين.</p>
-            <p style="color: var(--primary-red); font-weight: 700; margin-top: 10px;">مستحيل تفوز عليه بحماس يوم واحد.</p>
-        </div>
-        
-        <h3 class="section-title">٢- لأنك ما تلغي الإدمان… إنت تلغي مصدر الراحة</h3>
-        
-        <div class="content-text">
-            بالنسبة لك: سناب، تيك توك، الألعاب، الأفلام… مو مجرد "إدمان". هذه منطقة الأمان عند دماغك.
-        </div>
-        
-        <div class="callout">
-            <p>فإنت لما تحاول توقفها فجأة، دماغك ما يفهم إنك "تبي تتطور".</p>
-            <p>هو يفهم إنك تهدد استقراره، تشيل منه الراحة الوحيدة اللي يرجع لها، تسحب البساط من تحت قدميه.</p>
-            <p style="font-weight: 700; color: var(--primary-red);">فيقاوم. ويقنعك ترجع لها.</p>
-        </div>
-        
-        <h3 class="section-title">٣- لأنك تعتمد على مشاعر… والمشاعر ما تعيش أكثر من يومين</h3>
-        
-        <div class="content-text">
-            كل البشر يبدأون بالتغيير من إحساس: إحساس بالندم، إحساس بالغضب، إحساس بالإلهام، إحساس بالقرف من النفس…
-        </div>
-        
-        <div class="quote-box">
-            لكن هذي المشاعر عمرها قصير. تنتهي إذا نمت ليلة وحدة. واللي يبقى؟ نظامك القديم… أقوى وأثقل وأكثر رسوخًا.
-        </div>
-        
-        <div class="page-number">6</div>
-    </div>
-
-    <!-- Chapter 5 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">05</div>
-            <h2 class="chapter-title">وش معنى "إعادة ضبط الدوبامين"؟</h2>
-        </div>
-        
-        <div class="content-text">
-            إعادة ضبط الدوبامين = ترجع مخّك يتذوق اللذة من الأشياء اللي تستحق.
-        </div>
-        
-        <h3 class="section-title">🔥 المبادئ الثلاثة</h3>
-        
-        <div class="highlight-box" style="background: rgba(255,46,99,0.1);">
-            <p style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-bottom: 15px;">
-                ١- تقليل الدوبامين السريع
-            </p>
-            <p>مو منع. مو حرمان. لكن تقليل.</p>
-            <div class="bullet-point">بدل ٣ ساعات تيك توك → ٣٠ دقيقة</div>
-            <div class="bullet-point">بدل ١٥ فتح سناب في اليوم → ٣ فتحات</div>
-            <div class="bullet-point">بدل ألعاب ٤ ساعات → ساعة واحدة</div>
-        </div>
-        
-        <div class="highlight-box" style="background: rgba(8,217,214,0.1);">
-            <p style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-bottom: 15px;">
-                ٢- رفع الدوبامين البطيء (المفيد)
-            </p>
-            <p>الدوبامين الجيد يجي من:</p>
-            <div class="bullet-point">إنك تنهي مهمة</div>
-            <div class="bullet-point">إنك تتمرن</div>
-            <div class="bullet-point">إنك تمشي</div>
-            <div class="bullet-point">إنك تتعلم</div>
-            <div class="bullet-point">إنك ترتّب غرفتك</div>
-        </div>
-        
-        <div class="highlight-box">
-            <p style="font-size: 20px; font-weight: 700; color: var(--dark-navy); margin-bottom: 15px;">
-                ٣- بناء نظام يومي ثابت
-            </p>
-            <p>المخ يحب النظام. إذا لقي عندك:</p>
-            <div class="bullet-point">نوم ثابت</div>
-            <div class="bullet-point">أكل مضبوط</div>
-            <div class="bullet-point">شغل بوقت محدد</div>
-            <div class="bullet-point">راحة بوقت محدد</div>
-            <p style="margin-top: 15px;">راح يخفف توترك ويرجع يضبط توازنه.</p>
-        </div>
-        
-        <div class="page-number">7</div>
-    </div>
-
-    <!-- Chapter 6 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">06</div>
-            <h2 class="chapter-title">كيف ترجع تتحكم بحياتك؟</h2>
-        </div>
-        
-        <h3 class="section-title">🔥 الركيزة الأولى: نظّف حياتك من الفوضى السهلة</h3>
-        
-        <div class="callout">
-            <p style="font-weight: 700; margin-bottom: 10px;">الفوضى = دوبامين مشتت = طاقة متبخرة</p>
-        </div>
-        
-        <div class="content-text">
-            <strong>✔ جوالك مليان تنبيهات</strong><br>
-            شلّها. كلها. صدقني، ما تحتاج أي تنبيه غير الاتصال والواتساب من ناس محددين.
-        </div>
-        
-        <div class="content-text">
-            <strong>✔ غرفتك مكركبة</strong><br>
-            الغرفة الفوضوية = مخ فوضوي. رتّبها أول شيء. حتى لو ب10 دقايق.
-        </div>
-        
-        <div class="content-text">
-            <strong>✔ شاشة جوالك مليانة تطبيقات</strong><br>
-            حطها كلها داخل فولدر واحد. وخلي الشاشة فاضية قدامك. صفاء بصري = صفاء ذهني.
-        </div>
-        
-        <div class="content-text">
-            <strong>✔ سريرك مو مرتب</strong><br>
-            لا تستهين. ترتيب السرير كل صباح يعطي مخك إشارة: "اليوم تحت سيطرتي".
-        </div>
-        
-        <h3 class="section-title">🔥 الركيزة الثانية: نظام صغير… أهم من نظام خارق</h3>
-        
-        <div class="quote-box">
-            لما تبدأ بنظام صغير مرة وسهل مرة… مثل 5 دقايق، 10 دقايق، ترتيب بسيط… مخك يبدأ يعطيك إشارة داخلية: "أنا شخص يلتزم."
-        </div>
-        
-        <div class="highlight-box">
-            <p style="font-weight: 700; margin-bottom: 10px;">ليش النظام الصغير أهم ألف مرة؟</p>
-            <div class="bullet-point">لأن النظام الصغير يثبت هويتك مو إرادتك</div>
-            <div class="bullet-point">النظام الكبير يعطيك شعور الفشل حتى لو اجتهدت</div>
-            <div class="bullet-point">النظام الصغير يخلي العادة تمشي على الطاقة المنخفضة</div>
-            <div class="bullet-point">النظام الصغير يغيّر الشي اللي أنت تصدّقه عن نفسك</div>
-        </div>
-        
-        <div class="page-number">8</div>
-    </div>
-
-    <!-- Chapter 7 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">07</div>
-            <h2 class="chapter-title">وش الشي اللي تهرب منه؟</h2>
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            إنت ما تهرب للسوشيال ميديا… إنت تهرب من شي داخلك.
-        </div>
-        
-        <div class="content-text">
-            السوشيال ميديا مو المشكلة. هي بس الباب اللي تهرب من خلاله.
-        </div>
-        
-        <div class="callout">
-            <p style="font-weight: 700; margin-bottom: 10px;">الهروب الحقيقي جاي من:</p>
-            <div class="bullet-point">مشاعر ما واجهتها</div>
-            <div class="bullet-point">قرارات مأجلة</div>
-            <div class="bullet-point">أهداف خفت تبدأ فيها</div>
-            <div class="bullet-point">مهام ثقيلة عليك</div>
-            <div class="bullet-point">ضغط داخلي</div>
-            <div class="bullet-point">إحساس إنك مو كفو</div>
-        </div>
-        
-        <h3 class="section-title">🔥 كيف تعرف أنت من وش تهرب؟</h3>
-        
-        <div class="highlight-box">
-            <p><strong style="color: var(--primary-red);">السؤال 1:</strong></p>
-            <p>وش الشي اللي كل يوم تفكر تسويه… وتسحب عليه؟ هو هذا الشي اللي تهرب منه.</p>
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong style="color: var(--primary-red);">السؤال 2:</strong></p>
-            <p>وش المهمة اللي لو سويتها… بتغيّر حياتك بالفعل؟ (وغالبًا هي الشي اللي تخاف تبدأ فيه.)</p>
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong style="color: var(--primary-red);">السؤال 3:</strong></p>
-            <p>وش الشي اللي كل مرة تجي تسويه… تحس جسمك يدور "أي شيء ثاني"؟ تفتح جوال، تتنفس، تتحرك، تروح للمطبخ…</p>
-        </div>
-        
-        <div class="quote-box">
-            الهروب يكشف أهم شيء في حياتك. الشي اللي تهرب منه… هو المفتاح اللي يرجعك تتحكم بحياتك.
-        </div>
-        
-        <div class="page-number">9</div>
-    </div>
-
-    <!-- Chapter 8 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">08</div>
-            <h2 class="chapter-title">وش أسوي إذا المهمة ثقيلة؟</h2>
-        </div>
-        
-        <div class="content-text">
-            ٩٠٪ من الناس ما يهربون لأنهم كسالى… يهربون لأن المهمة اللي قدامهم أكبر من طاقتهم الحالية.
-        </div>
-        
-        <h3 class="section-title">🔥 السر الأول: مخّك يرفض "الكبير"… لكنه يقبل "الصغير جدًا"</h3>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="highlight-box" style="background: rgba(255,46,99,0.1);">
-                <p><strong>❌ يرفض:</strong></p>
-                <div class="bullet-point">بدرس ساعتين</div>
-                <div class="bullet-point">بكتب ٣ صفحات</div>
-                <div class="bullet-point">بخلص كل الشغل</div>
-            </div>
-            
-            <div class="highlight-box" style="background: rgba(8,217,214,0.1);">
-                <p><strong>✔️ يقبل:</strong></p>
-                <div class="bullet-point">بقعد ١٠ دقايق</div>
-                <div class="bullet-point">بس بفتح اللابتوب</div>
-                <div class="bullet-point">بس بجرب ٥ دقايق</div>
-            </div>
-        </div>
-        
-        <div class="quote-box">
-            مخك ما يعارض الفعل نفسه… هو يعارض الحجم.
-        </div>
-        
-        <h3 class="section-title">🔥 السر الثاني: المخ يتغيّر بعد ٣ دقايق من البدء</h3>
-        
-        <div class="callout">
-            <p>بمجرد تبدأ بـ ٣–٥ دقايق، مخك يتحول إلى "وضع الإنجاز".</p>
-            <p style="margin-top: 10px;">أول ٥ دقايق هي البوابة… بعدها التقدم يصير أسهل من التوقف.</p>
-        </div>
-        
-        <h3 class="section-title">🔥 السر الثالث: التجزئة تخلي المهمة مستحيلة تصير ممكنة</h3>
-        
-        <div class="highlight-box">
-            <p><strong>مثال عملي:</strong></p>
-            <p>"أبني مشروع" →</p>
-            <div class="bullet-point">افتح ملف جديد</div>
-            <div class="bullet-point">اكتب عنوان المشروع</div>
-            <div class="bullet-point">اكتب ٢٠ كلمة عنه</div>
-        </div>
-        
-        <div class="page-number">10</div>
-    </div>
-
-    <!-- Chapter 9 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">09</div>
-            <h2 class="chapter-title">كيف ترجع لمسار حياتك</h2>
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            ما في شيء اسمه تأخرت. في شيء اسمه وقفت كثير — وبتكمّل الآن.
-        </div>
-        
-        <h3 class="section-title">1) أوّل خطوة: اقبل الواقع بدون جلد ذات</h3>
-        
-        <div class="callout">
-            <p>جلد الذات ما عمَر رجّع أحد لمساره.</p>
-            <p style="font-weight: 700; margin-top: 10px;">المطلوب: تقييم هادئ وواقعي</p>
-        </div>
-        
-        <div class="highlight-box">
-            <div class="bullet-point">وين أنا الآن؟</div>
-            <div class="bullet-point">وش الشي اللي خلاني أضيع؟</div>
-            <div class="bullet-point">وش أول خطوة أقدر أسويها اليوم؟</div>
-        </div>
-        
-        <h3 class="section-title">2) ارجع من أبسط نقطة… مو من النقطة اللي تمنّيتها</h3>
-        
-        <div class="content-text">
-            أنت ما ترجع للمسار من المكان اللي طحت فيه… بل من المكان اللي تقدر تبدأ منه الحين.
-        </div>
-        
-        <div class="highlight-box">
-            <div class="bullet-point">10 دقايق تركيز؟ ممتاز</div>
-            <div class="bullet-point">3 مهام بسيطة؟ كفو</div>
-            <div class="bullet-point">نص ساعة بدون جوّال؟ عظيمة</div>
-        </div>
-        
-        <h3 class="section-title">3) أرجّع هويتك… مو جدولك بس</h3>
-        
-        <div class="quote-box">
-            "أنا شخص ينفّذ حتى لو مزاجي صفر."<br>
-            "أنا أبدأ صغير… وأكبر بالتدريج."<br>
-            "أنا أكمّل… حتى لو وقفت."
-        </div>
-        
-        <h3 class="section-title">4) سوّ خطة رجوع لمدة 7 أيام بس</h3>
-        
-        <div class="content-text">
-            مو شهر… مو ثلاث شهور. أسبوع واحد… كأنه إعادة تشغيل.
-        </div>
-        
-        <div class="page-number">11</div>
-    </div>
-
-    <!-- Chapter 10 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">10</div>
-            <h2 class="chapter-title">كيف تنجح في حياتك</h2>
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            النجاح ببساطة: إنك تسوي الأشياء الصح… كل يوم… حتى لو كانت صغيرة.
-        </div>
-        
-        <h3 class="section-title">1) النجاح يبدأ من شي واحد: السيطرة على يومك</h3>
-        
-        <div class="callout">
-            <p><strong>كيف تسيطر على يومك؟</strong></p>
-            <div class="bullet-point">3 مهام أساسية فقط</div>
-            <div class="bullet-point">وقت عمل بلا جوال ولو 25 دقيقة</div>
-            <div class="bullet-point">نوم محترم</div>
-            <div class="bullet-point">ساعة بدون سوشل ميديا</div>
-        </div>
-        
-        <h3 class="section-title">2) سر النجاح الحقيقي: الاستمرارية الغبية</h3>
-        
-        <div class="content-text">
-            إي والله… الاستمرارية الغبية هي كل شيء. الناس يحمسون ويبدؤون بقوة… أنت تكمل حتى لو تركيزك تعبان… حتى لو مشاعرك صفر… حتى لو تحس إن شغلك "مو ذاك الزود".
-        </div>
-        
-        <div class="content-text">
-            كمّل… وبتسبق 95٪ من البشر.
-        </div>
-        
-        <div class="highlight-box">
-            <p style="font-weight: 700; color: var(--primary-red);">ليش؟</p>
-            <p>لأن أغلب الناس "ينقطعون"… مو لأنهم أغبياء… بل لأنهم يعتمدون على الشعور.</p>
-            <p style="margin-top: 10px;">إنت تعتمد على النظام. والنظام = انتصارات كثيرة، متراكمة، تصنع نجاح ضخم.</p>
-        </div>
-        
-        <h3 class="section-title">3) النجاح = هوية قبل ما يكون مهام</h3>
-        
-        <div class="quote-box">
-            "أنا شخص ينجز حتى لو نفسيتي مو رايقة."<br>
-            "أنا أبدأ صغير وأكبر بالتدريج."<br>
-            "أنا ما أوقف… ممكن أطيح بس أرجع."
-        </div>
-        
-        <h3 class="section-title">4) اختَر طريق واحد واستمر فيه… لا تبعثر</h3>
-        
-        <div class="content-text">
-            أكبر سبب يخلي الناس ما توصل: يطاردون عشرة طرق في نفس الوقت.
-        </div>
-        
-        <div class="callout">
-            <p>النجاح يحب الشخص اللي يعطيه "تركيز"… مو الشخص اللي يبدّل كل أسبوع.</p>
-        </div>
-        
-        <h3 class="section-title">5) ابني "نقاط قوة صغيرة" كل يوم</h3>
-        
-        <div class="highlight-box">
-            <p><strong>6 نقاط قوة يومية:</strong></p>
-            <div class="bullet-point">نوم كويس</div>
-            <div class="bullet-point">ساعة بدون جوال</div>
-            <div class="bullet-point">كتابة 3 مهام</div>
-            <div class="bullet-point">تنفيذ المهمة الأولى قبل أي شيء</div>
-            <div class="bullet-point">20 دقيقة تركيز فعلي</div>
-            <div class="bullet-point">عادة صغيرة مرتبطة بهدفك</div>
-        </div>
-        
-        <div class="page-number">12</div>
-    </div>
-
-    <!-- Chapter 11 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">11</div>
-            <h2 class="chapter-title">كيف ترجع الالتزام لحياتك</h2>
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            ما فيه أحد ملتزم طول الوقت… فيه ناس بنَت نظام يخلي الالتزام أسهل من الانفلات.
-        </div>
-        
-        <h3 class="section-title">1) الالتزام مو شيء تولده… الالتزام شيء تبنيه</h3>
-        
-        <div class="content-text">
-            قوة الإرادة تنفد، المزاج يتغير، والظروف تنضغط… لكن النظام يشتغل حتى لو كل شيء خرب.
-        </div>
-        
-        <h3 class="section-title">2) اقطع الخيارات… وخلي الطريق الصح هو الأسهل</h3>
-        
-        <div class="callout">
-            <p><strong>أمثلة عملية:</strong></p>
-            <div class="bullet-point">جوالك بعيد وقت العمل = ما عندك إلا تشتغل</div>
-            <div class="bullet-point">جدولك محدد = ما تحتاج تفكر وش تسوي</div>
-            <div class="bullet-point">بيئة مرتبة = ما في مشتتات</div>
-        </div>
-        
-        <div class="quote-box">
-            أنت ما تحتاج قوة… تحتاج خيارات أقل.
-        </div>
-        
-        <h3 class="section-title">3) اربط الالتزام بهويتك — مو بمزاجك</h3>
-        
-        <div class="highlight-box">
-            <p>أنت تبغى تكون:</p>
-            <div class="bullet-point">الشخص اللي ينهي الشغلة حتى لو متضايق</div>
-            <div class="bullet-point">الشخص اللي يبدأ حتى لو وقتك ضيق</div>
-            <div class="bullet-point">الشخص اللي يلتزم حتى لو اليوم ما كان مثالي</div>
-        </div>
-        
-        <div class="content-text">
-            الهوية أقوى من القوة الإرادية. لأن الهوية = "أنا هذا الشخص". ومخك يكره يكذب على نفسه.
-        </div>
-        
-        <h3 class="section-title">4) قاعدة ذهبية: لا تفوّت يومين</h3>
-        
-        <div class="callout">
-            <p style="font-size: 18px; font-weight: 700; color: var(--primary-red);">
-                يوم واحد = محطة<br>
-                يومين متتاليين = عادة جديدة اسمها الانقطاع
-            </p>
-        </div>
-        
-        <div class="page-number">13</div>
-    </div>
-
-    <!-- Chapter 12 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">12</div>
-            <h2 class="chapter-title">كيف تبني حياة تمشي على "الأوتوماتيك"</h2>
-        </div>
-        
-        <div class="content-text">
-            تخيل معي لحظة… تقوم من النوم، وتبدأ يومك، وتخلص مهامك، وتمشي حياتك بشكل طبيعي… بدون ما تفكر… بدون ما تجاهد نفسك…
-        </div>
-        
-        <h3 class="section-title">1) اضبط البداية… بداية يومك = بداية عقلك</h3>
-        
-        <div class="highlight-box">
-            <p><strong>البداية الذهبية:</strong></p>
-            <div class="bullet-point">لا جوال أول 20–30 دقيقة</div>
-            <div class="bullet-point">ماء + حركة خفيفة</div>
-            <div class="bullet-point">مهمة وحدة "فوز سريع"</div>
-        </div>
-        
-        <h3 class="section-title">2) خلي يومك واضح… الوضع العشوائي يخليك تتخبّط</h3>
-        
-        <div class="callout">
-            <p>العقل يكره القرارات الكثيرة. كل قرار = سحب طاقة.</p>
-            <p style="margin-top: 10px;"><strong>الحل:</strong> خلي جدولك واضح قبل ما تنام:</p>
-            <div class="bullet-point">3 مهام واضحة</div>
-            <div class="bullet-point">وقت بداية ثابت</div>
-            <div class="bullet-point">أول مهمة محسومة</div>
-        </div>
-        
-        <h3 class="section-title">3) ارسم نظام بسيط جداً</h3>
-        
-        <div class="highlight-box">
-            <p><strong>مثال نظام يومي بسيط:</strong></p>
-            <div class="bullet-point">أول 25 دقيقة: مهمة رقم 1</div>
-            <div class="bullet-point">بعدها راحة قصيرة</div>
-            <div class="bullet-point">ساعتين بدون تنبيهات</div>
-            <div class="bullet-point">تقفيل السوشل وقت العمل</div>
-            <div class="bullet-point">وقت ثابت للنوم</div>
-        </div>
-        
-        <h3 class="section-title">4) أبعد المشتتات بطريقة تمنعك حتى لو تبي تتشتت</h3>
-        
-        <div class="content-text">
-            لا تعتمد على الإرادة… اعتمد على التصميم:
-        </div>
-        
-        <div class="highlight-box">
-            <div class="bullet-point">اشحن جوالك بعيد وقت العمل</div>
-            <div class="bullet-point">احذف التطبيقات اللي تسحب وقتك</div>
-            <div class="bullet-point">سكر التنبيهات كاملة</div>
-        </div>
-        
-        <div class="quote-box">
-            كل ما كان التشتت صعب، الإنتاجية تصير سهلة.
-        </div>
-        
-        <div class="page-number">14</div>
-    </div>
-
-    <!-- Chapter 13 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">13</div>
-            <h2 class="chapter-title">كيف تبني نظامك الشخصي — خطوة بخطوة</h2>
-        </div>
-        
-        <div class="content-text">
-            الحين وصلنا للمرحلة اللي فعليًا تغيّر حياتك. هذا الفصل مو تنظير… هذا مكان نبدأ نبني نظامك الشخصي المتكامل.
-        </div>
-        
-        <h3 class="section-title">1) اكتب أهدافك بطريقة ما تلخبط دماغك</h3>
-        
-        <div class="callout">
-            <p><strong>سؤالين فقط يكفون:</strong></p>
-            <div class="bullet-point">وش أبغى أسوي خلال 30 يوم؟</div>
-            <div class="bullet-point">وش الأشياء اليومية اللي لو سويتها بتوصلني لهدف 30 يوم؟</div>
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong>مثال:</strong></p>
-            <p>الهدف 30 يوم: أبغى أرجع لياقتي</p>
-            <p>عادات يومية:</p>
-            <div class="bullet-point">10 دقايق مشي</div>
-            <div class="bullet-point">لترين ماء</div>
-            <div class="bullet-point">وجبة صحية وحدة</div>
-        </div>
-        
-        <h3 class="section-title">2) صمّم نظام يخلّيك تربح بدون ما تطيح</h3>
-        
-        <div class="quote-box">
-            النظام اللي تقدر تلتزم فيه أهم 1000 مرّة من النظام اللي يكسر ظهرك.
-        </div>
-        
-        <h3 class="section-title">3) قاعدة "لا يومين ورا بعض"</h3>
-        
-        <div class="content-text">
-            هذي القاعدة ذهبية: لو فوت يوم واحد → طبيعي. لو فوت يومين متتاليين → هذا بداية عادة جديدة "عادة عدم الالتزام".
-        </div>
-        
-        <h3 class="section-title">4) نظّم يومك بطريقة تمنع الفوضى</h3>
-        
-        <div class="highlight-box">
-            <p><strong>Morning Plan (خطة الصباح):</strong></p>
-            <div class="bullet-point">افتح ورقة / نوتة</div>
-            <div class="bullet-point">اكتب أهم 3 مهام لليوم</div>
-            <div class="bullet-point">اسأل نفسك: "لو أنجزت مهمة واحدة فقط… وش هي؟"</div>
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong>Evening Reset (إعادة ضبط المساء):</strong></p>
-            <div class="bullet-point">راجع يومك (3 دقايق فقط)</div>
-            <div class="bullet-point">وش سويت؟ وش ما سويت؟ وش السبب؟</div>
-            <div class="bullet-point">ما نلوم نفسك، نحلل… فقط</div>
-        </div>
-        
-        <div class="page-number">15</div>
-    </div>
-
-    <!-- Chapter 14 -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">14</div>
-            <h2 class="chapter-title">كيف تثبّت هويتك الجديدة</h2>
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            أنت ما تبغى تكون شخص "يحاول ينتج". أنت تبغى تكون شخص منتج. في فرق ضخم بينهم.
-        </div>
-        
-        <h3 class="section-title">1) "الهوية الجديدة" أهم من "الأهداف الجديدة"</h3>
-        
-        <div class="content-text">
-            الأهداف تتغير… لكن الهوية تدخل في دماغك كنظام تشغيل.
-        </div>
-        
-        <div class="callout">
-            <p><strong>الفرق:</strong></p>
-            <p>هدف: "أبغى أصير ملتزم"</p>
-            <p>هوية: "أنا شخص يلتزم حتى لو كانت الحالة ما تساعد"</p>
-        </div>
-        
-        <h3 class="section-title">2) العادات الصغيرة = إثباتات يومية لهويتك</h3>
-        
-        <div class="highlight-box">
-            <div class="bullet-point">يوم مشيت 5 دقايق → "أنا شخص يهتم بجسمه"</div>
-            <div class="bullet-point">يوم اشتغلت 10 دقايق → "أنا شخص ينجز"</div>
-            <div class="bullet-point">يوم تجنبت السوشل ساعة → "أنا شخص ما ينغلب بسهولة"</div>
-        </div>
-        
-        <div class="quote-box">
-            الهوية تُبنى بالبراهين — مو بالأماني. أنت ما تبني هويتك بقرار… تبنيها بحركة صغيرة كل يوم.
-        </div>
-        
-        <h3 class="section-title">3) استخدم "قاعدة الجسر": اربط نفسك بالهوية الجديدة</h3>
-        
-        <div class="content-text">
-            كل مرة تسوي عادة، أضف لها جملة بسيطة في مخك: "أنا أسوي هذا الشيء لأنّي شخص __________."
-        </div>
-        
-        <div class="highlight-box">
-            <p><strong>أمثلة:</strong></p>
-            <div class="bullet-point">أقرأ صفحة → "لأني شخص يتعلم كل يوم"</div>
-            <div class="bullet-point">أشتغل 10 دقايق → "لأني شخص ينجز مهما كان"</div>
-            <div class="bullet-point">أمشي → "لأني شخص يحافظ على صحته"</div>
-        </div>
-        
-        <h3 class="section-title">4) سوّ "إعلان هويتك" — جملة تثبيت</h3>
-        
-        <div class="callout">
-            <p>اكتب سطر واحد يكون تعريفك الجديد:</p>
-            <p style="font-size: 18px; font-weight: 700; color: var(--primary-red); margin-top: 15px;">
-                "أنا شخص يلتزم بأبسط نسخة من خطته مهما كانت الظروف."
-            </p>
-        </div>
-        
-        <div class="page-number">16</div>
-    </div>
-
-    <!-- Chapter 15 - Final -->
-    <div class="page">
-        <div class="chapter-header">
-            <div class="chapter-number">15</div>
-            <h2 class="chapter-title">الخلاصة — الفصل الأخير</h2>
-        </div>
-        
-        <div class="content-text">
-            بعد كل اللي تعلّمته عن الدوبامين، العادات، الهوية، والالتزام… يبقى إن الموضوع كله يتركز في قاعدتين بس.
-        </div>
-        
-        <div class="quote-box" style="font-size: 20px;">
-            لو طبقت هالقاعدتين، حتى بأسوأ أيامك… حياتك بتتغير للأفضل بدون ما تحس.
-        </div>
-        
-        <h3 class="section-title">🔹 القاعدة الأولى</h3>
-        
-        <div class="callout" style="background: rgba(255,46,99,0.1); border-color: var(--primary-red);">
-            <p style="font-size: 20px; font-weight: 700; color: var(--primary-red); margin-bottom: 15px;">
-                خلّ الأشياء اللي تبي تسويها "أسهل"… والأشياء اللي تكرهها "أصعب"
-            </p>
-            <p><strong>✔️ إذا تبغى عادة تستمر:</strong></p>
-            <div class="bullet-point">تبي تقرأ؟ خلّ الكتاب جنب السرير</div>
-            <div class="bullet-point">تبي تشتغل؟ افتح اللابتوب قبل تنام</div>
-            <div class="bullet-point">تبي تقلل السوشل؟ شلّ التطبيقات من الواجهة</div>
-            
-            <p style="margin-top: 15px;"><strong>❌ وإذا تبغى عادة سيئة تطيح:</strong></p>
-            <div class="bullet-point">طلّع السوشل برا الصفحة الأولى</div>
-            <div class="bullet-point">حط كلمة سر طويلة للترفيه</div>
-            <div class="bullet-point">اطفِ إشعاراتك</div>
-        </div>
-        
-        <div class="quote-box">
-            اللعبة كلها هندسة بيئة. مو قوة إرادة.
-        </div>
-        
-        <h3 class="section-title">🔹 القاعدة الثانية</h3>
-        
-        <div class="callout" style="background: rgba(8,217,214,0.1); border-color: var(--secondary-cyan);">
-            <p style="font-size: 20px; font-weight: 700; color: var(--secondary-cyan); margin-bottom: 15px;">
-                لا تفوّت يومين متتاليين
-            </p>
-            <p>✔️ يوم واحد ضياع؟ عادي. ترجع بكرة كأن ما صار شي.</p>
-            <p style="margin-top: 10px;">❌ يومين ضياع؟ هذا هو المكان اللي أغلب الناس يرجعون فيه لنقطة الصفر.</p>
-        </div>
-        
-        <div class="page-number">17</div>
-    </div>
-
-    <!-- Final Summary Page -->
-    <div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);">
-        <div style="max-width: 600px;">
-            <div class="emoji-large">✨</div>
-            
-            <h2 style="font-size: 36px; font-weight: 900; color: var(--primary-red); margin-bottom: 30px;">
-                ملخص الملخص
-            </h2>
-            
-            <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px;">
-                <p style="font-size: 20px; line-height: 2; margin-bottom: 20px;">
-                    تبغى تعيد ضبط الدوبامين؟<br>
-                    تبغى ترجع تسيطر على يومك؟<br>
-                    تبغى تصير الشخص اللي يسوي اللي يقول بيسويه؟
-                </p>
-                
-                <p style="font-size: 18px; line-height: 2; margin-top: 30px;">
-                    كل اللي تحتاجه فعليًا هو:
-                </p>
-                
-                <div style="background: rgba(255,46,99,0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-right: 5px solid var(--primary-red);">
-                    <p style="font-size: 22px; font-weight: 700; color: var(--primary-red);">
-                        1) سهّل الصح وصعّب الغلط
-                    </p>
-                </div>
-                
-                <div style="background: rgba(8,217,214,0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-right: 5px solid var(--secondary-cyan);">
-                    <p style="font-size: 22px; font-weight: 700; color: var(--secondary-cyan);">
-                        2) لا تفوّت يومين
-                    </p>
-                </div>
-            </div>
-            
-            <div style="background: var(--dark-navy); color: white; padding: 30px; border-radius: 15px;">
-                <p style="font-size: 24px; font-weight: 700; margin-bottom: 15px;">
-                    نفّذ بس هذي القاعدتين…
-                </p>
-                <p style="font-size: 18px; line-height: 2;">
-                    وشوف كيف حياتك تبدأ تتغير من أسبوع لأول شهر،<br>
-                    ثم تصير "هويتك".
-                </p>
-            </div>
-        </div>
-        
-        <div class="page-number">18</div>
-    </div>
-
-</body>
-</html>
